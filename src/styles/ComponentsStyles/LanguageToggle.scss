@@ -1,0 +1,30 @@
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  &__button {
+    background-color: rgba(255, 232, 31, 0.2);
+    border: 1px solid $primary-color;
+    border-radius: 20px;
+    padding: $spacing-xs $spacing-sm;
+    color: $text-color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 232, 31, 0.3);
+    }
+  }
+
+  &__indicator {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__status {
+    font-size: 0.9rem;
+    color: $text-secondary;
+  }
+}

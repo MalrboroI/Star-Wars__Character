@@ -1,0 +1,29 @@
+.home-page {
+  @include flex-center;
+  min-height: calc(100vh - 200px);
+  text-align: center;
+  padding: $spacing-xl;
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    color: $primary-color;
+    font-size: 2.5rem;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    margin-bottom: $spacing-xl;
+    line-height: 1.6;
+  }
+
+  &__button {
+    @include button-primary;
+    font-size: 1.1rem;
+    padding: $spacing-md $spacing-xl;
+  }
+}

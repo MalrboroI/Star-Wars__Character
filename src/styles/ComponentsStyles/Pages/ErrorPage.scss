@@ -1,0 +1,27 @@
+.not-found-page {
+  @include flex-center;
+  min-height: calc(100vh - 200px);
+  text-align: center;
+  padding: $spacing-xl;
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 5rem;
+    color: $primary-color;
+    margin-bottom: $spacing-md;
+  }
+
+  &__message {
+    font-size: 1.5rem;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__link {
+    @include button-primary;
+    font-size: 1.1rem;
+  }
+}

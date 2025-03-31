@@ -1,0 +1,23 @@
+.header {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: $spacing-md 0;
+  border-bottom: 2px solid $primary-color;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    color: $primary-color;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+}

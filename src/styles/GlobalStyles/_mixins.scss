@@ -1,0 +1,76 @@
+// Стили карточек
+@mixin card-styles {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid $primary-color;
+  border-radius: 8px;
+  padding: $spacing-md;
+  color: $text-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+// Обрезание текста с многоточием
+@mixin text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Базовые теги
+@mixin tag-base {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: $secondary-color;
+}
+
+// Брейкпоинты 
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) and (max-width: $breakpoint-max) {
+      @content;
+    }
+  }
+}
+
+// Флексы
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Primary button
+@mixin button-primary {
+  background-color: $primary-color;
+  color: $secondary-color;
+  border: none;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,68 @@
+.characters-page {
+  padding: $spacing-xl;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__title {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    padding: $spacing-md 0;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // gap: $spacing-lg;
+    // padding: $spacing-md 0;
+
+    // justify-items: center;
+    // border: 2px solid white;
+
+    .character-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.5s ease forwards;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+      &::after {
+        content: "";
+        display: block;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          $primary-color,
+          transparent
+        );
+        margin: $spacing-md 0;
+      }
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          animation-delay: $i * 0.1s;
+        }
+      }
+    }
+
+    @include respond-to(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__load-more {
+    @include button-primary;
+    margin: $spacing-xl auto;
+    display: block;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

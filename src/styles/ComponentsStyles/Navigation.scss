@@ -1,0 +1,36 @@
+.navigation {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: $spacing-sm 0;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin: 0 $spacing-lg;
+  }
+
+  &__link {
+    color: $text-color;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: $spacing-sm $spacing-md;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+      background-color: rgba(255, 232, 31, 0.1);
+    }
+
+    &--active {
+      color: $primary-color;
+      background-color: rgba(255, 232, 31, 0.2);
+      font-weight: bold;
+    }
+  }
+}

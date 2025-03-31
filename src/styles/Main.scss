@@ -1,0 +1,29 @@
+// Глобальные стили
+@import "./GlobalStyles/variables";
+@import "./GlobalStyles/mixins";
+
+// Стили компонентов
+@import "./ComponentsStyles/Pages/MainPage.scss";
+@import "./ComponentsStyles/Pages/CharactersPage.scss";
+@import "./ComponentsStyles/CharacterCard.scss";
+@import "./ComponentsStyles/Pages/ErrorPage.scss";
+@import "./ComponentsStyles/Header.scss";
+@import "./ComponentsStyles/Navigation.scss";
+@import "./ComponentsStyles/Filter.scss";
+@import "./ComponentsStyles/Modal.scss";
+@import "./ComponentsStyles/LanguageToggle.scss";
+@import "./ComponentsStyles/Loader.scss";
+@import "./ComponentsStyles/NotFoundPage.scss";
+
+// Базовые стили
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+* {
+  box-sizing: border-box;
+}
