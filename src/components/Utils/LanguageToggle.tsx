@@ -10,17 +10,17 @@ const LanguageToggle: React.FC = () => {
         className="language-toggle__button"
         onClick={toggleLanguage}
         aria-label={
-          language === "english"
+          language === "Russian"
             ? "Переключить на вуки"
-            : "Переключить на английский"
+            : "Переключить на русский"
         }
       >
         <span className="language-toggle__indicator">
-          {language === "english" ? "🌍 Wookiee" : "🌎 English"}
+          {language === "Russian" ? "🌍 Wookiee" : "🌍 Russian"}
         </span>
       </button>
       <div className="language-toggle__status">
-        {language === "english" ? "Текущий: English" : "Текущий: Wookiee"}
+        {language === "Russian" ? "Текущий: Russian" : "Текущий: Wookiee"}
       </div>
     </div>
   );

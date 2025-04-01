@@ -1,24 +1,24 @@
 import { createContext, useContext, useState } from "react";
 
 type AppContextType = {
-  language: "english" | "wookiee";
+  language: "Russian" | "Wookiee";
   toggleLanguage: () => void;
 };
 
 const AppContext = createContext<AppContextType>({
-  language: "english",
+  language: "Russian",
   toggleLanguage: () => {},
 });
 
-export const useAppContext = () => useContext(AppContext);
+export const useAppContext = () => useContext<AppContextType>(AppContext);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [language, setLanguage] = useState<"english" | "wookiee">("english");
+  const [language, setLanguage] = useState<"Russian" | "Wookiee">("Russian");
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "english" ? "wookiee" : "english"));
+    setLanguage((prev) => (prev === "Russian" ? "Wookiee" : "Russian"));
   };
 
   return (

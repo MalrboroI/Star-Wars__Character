@@ -41,7 +41,7 @@ export interface FilterOption {
 }
 
 // Типы для контекста
-export type AppLanguage = "english" | "wookiee";
+export type AppLanguage = "Russian" | "Wookiee";
 
 export interface AppContextType {
   language: AppLanguage;

@@ -10,12 +10,12 @@ const ErrorPage: React.FC = () => {
       <div className="not-found-page__content">
         <h1 className="not-found-page__title">404</h1>
         <p className="not-found-page__message">
-          {language === "english"
+          {language === "Russian"
             ? "Страница не найдена"
             : "Oaoahuwhao wh huwoohwa"}
         </p>
         <Link to="/" className="not-found-page__link">
-          {language === "english" ? "Вернуться на главную" : "Oaoahuwhao rahow"}
+          {language === "Russian" ? "Главная страница" : "Oaoahuwhao rahow"}
         </Link>
       </div>
     </div>

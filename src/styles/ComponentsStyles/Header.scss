@@ -15,9 +15,13 @@
     align-items: center;
   }
 
-  &__title {
-    color: $primary-color;
+  &__logo {
     margin: 0;
     font-size: 1.8rem;
+
+    &:hover {
+      width: 34px;
+      box-shadow: 0 0px 0px, 54px -6px 30px $primary-color;
+    }
   }
 }

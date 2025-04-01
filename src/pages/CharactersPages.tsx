@@ -73,25 +73,25 @@ const CharactersPage: React.FC = () => {
     <div className="characters-page">
       <h1 className="characters-page__title">
         {totalCount}{" "}
-        {language === "english" ? "Персонажей для выбора" : "rcwochuanaoc"}
+        {language === "Russian" ? "Персонажей для выбора" : "rcwochuanaoc"}
       </h1>
 
       <Filter
         options={[
-          { value: "all", label: language === "english" ? "Все" : "rahow" },
+          { value: "all", label: language === "Russian" ? "Все" : "rahow" },
           {
             value: "male",
-            label: language === "english" ? "Мужской" : "scraanwo",
+            label: language === "Russian" ? "Мужской" : "scraanwo",
           },
           {
             value: "female",
-            label: language === "english" ? "Женский" : "wwwoscraanwo",
+            label: language === "Russian" ? "Женский" : "wwwoscraanwo",
           },
           {
             value: "hermaphrodite",
-            label: language === "english" ? "Гермафродит" : "akwooo",
+            label: language === "Russian" ? "Гермафродит" : "akwooo",
           },
-          { value: "none", label: language === "english" ? "Нет" : "wh/ra" },
+          { value: "none", label: language === "Russian" ? "Нет" : "wh/ra" },
         ]}
         selectedValue={genderFilter}
         onChange={setGenderFilter}
@@ -118,10 +118,10 @@ const CharactersPage: React.FC = () => {
           disabled={loading}
         >
           {loading
-            ? language === "english"
+            ? language === "Russian"
               ? "Загрузка..."
               : "oaoahuwhao..."
-            : language === "english"
+            : language === "Russian"
             ? "Загрузить еще"
             : "oaoahuwhao rcwochuanaoc"}
         </button>

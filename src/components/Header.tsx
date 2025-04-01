@@ -1,11 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import LanguageToggle from "../components/Utils/LanguageToggle";
+import Logo from "../../public/image/Logo.svg";
 
 const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <h1 className="header__title">Star Wars API</h1>
+        <NavLink to="/" className="header__logo">
+          <img src={Logo} alt="Logo Star Wars" />
+        </NavLink>
         <LanguageToggle />
       </div>
     </header>

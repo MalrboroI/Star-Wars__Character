@@ -52,16 +52,16 @@ api.interceptors.response.use(
 
 export const fetchCharacters = async (
   page: number = 1,
-  language: "english" | "wookiee" = "english"
+  language: "Russian" | "Wookiee" = "Russian"
 ) => {
   const url =
-    language === "wookiee"
-      ? `${Base_URL}people/?format=wookiee&page=${page}`
+    language === "Wookiee"
+      ? `${Base_URL}people/?format=Wookiee&page=${page}`
       : `${Base_URL}people/?page=${page}`;
 
   try {
     const response = await axios.get(url);
-    return language === "wookiee"
+    return language === "Wookiee"
       ? parseWookieeResponse(response.data)
       : response.data;
   } catch (error) {

@@ -62,7 +62,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
         </IconButton>
       </DialogTitle>
 
-      <DialogContent dividers className="character-modal__content">
+      <DialogContent className="character-modal__content">
         <div className="character-modal__content__image-container">
           {imageData.loading ? (
             <div className="loading-container">
@@ -100,16 +100,14 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
             <span className="info-label">Пол:</span>
             <span>{character.gender}</span>
           </div>
-
-          {imageData.description && (
-            <div className="description-section">
-              <h3 className="description-section__title">Описание</h3>
-              <p className="description-section__text">
-                {imageData.description}
-              </p>
-            </div>
-          )}
         </div>
+
+        {imageData.description && (
+          <div className="description-section">
+            <h3 className="description-section__title">Описание</h3>
+            <p className="description-section__text">{imageData.description}</p>
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );

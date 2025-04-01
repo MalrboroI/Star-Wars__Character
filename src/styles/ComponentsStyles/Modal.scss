@@ -2,7 +2,7 @@
   .MuiPaper-root {
     background-color: #121212;
     color: #ffffff;
-    border: 2px solid #ffe81f;
+    border: 2px solid $primary-color;
   }
 
   &__header {
@@ -11,13 +11,13 @@
     align-items: center;
     background-color: #000;
     border-bottom: 1px solid #333;
-    padding: 16px 24px;
+    color: $primary-color;
+  }
 
-    &__close-button {
-      color: #fff;
-      &:hover {
-        color: #ffe81f;
-      }
+  &__close-button {
+    color: white;
+    &:hover {
+      color: $primary-color;
     }
   }
 
@@ -46,7 +46,7 @@
         max-width: 100%;
         max-height: 400px;
         border-radius: 8px;
-        border: 2px solid #ffe81f;
+        border: 2px solid $primary-color;
       }
 
       .image-placeholder {
@@ -64,6 +64,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: $spacing-md;
+      margin: 16px;
 
       .info-row {
         display: flex;
@@ -76,17 +77,25 @@
         color: $primary-color;
         font-weight: bold;
       }
+    }
+    .description-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 16px 16px 16px;
 
-      .description-section {
-        &__title {
-          color: #ffe81f;
-          margin-bottom: 12px;
-        }
+      &__title {
+        //  Нужно ли размещение на центр?
+        display: flex;
+        // justify-content: center;
+        color: $primary-color;
+        margin-bottom: 12px;
+      }
 
-        &__text {
-          line-height: 1.6;
-          color: #bdbdbd;
-        }
+      &__text {
+      text-align: justify;
+        line-height: 1.6;
+        color: #bdbdbd;
       }
     }
   }

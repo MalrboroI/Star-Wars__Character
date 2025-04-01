@@ -5,8 +5,8 @@ const NotFoundPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { errorMessage, errorDetails } = location.state || {
-    errorMessage: "Произошла неизвестная ошибка",
-    errorDetails: "",
+    errorMessage: "Не удалось загрузить данные персонажей",
+    errorDetails: "Network Error",
   };
 
   return (
@@ -19,10 +19,10 @@ const NotFoundPage: React.FC = () => {
 
         <div className="action-buttons">
           <button onClick={() => navigate(-1)} className="back-button">
-            Вернуться назад
+            Обновить загрузку
           </button>
           <button onClick={() => navigate("/")} className="home-button">
-            На главную
+            Главная страница
           </button>
         </div>
       </div>
