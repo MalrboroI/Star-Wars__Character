@@ -1,5 +1,6 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
+import Banner from "../../public/image/BannerComplete.svg";
 import { Link } from "react-router-dom";
 
 const MainPage: React.FC = () => {
@@ -23,11 +24,12 @@ const MainPage: React.FC = () => {
             ? "Вы можете узнать всю информацию о ваших любимых персонажах"
             : "Вууууки"}
         </p>
-        <Link to="/characters" className="home-page__button">
+        <Link to="/Characters" className="home-page__button">
           {language === "Russian"
             ? "Посмотреть персонажей"
             : "Oaoahuwhao rcwochuanaoc"}
         </Link>
+            <img className="home-page__banner" src={Banner} alt="" />
       </div>
     </div>
   );

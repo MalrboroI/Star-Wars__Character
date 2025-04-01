@@ -4,10 +4,11 @@ import App from "./../App";
 import React, { Suspense } from "react";
 import Loader from "../components/Utils/Loader";
 
+// "Ленивая" загрузка страниц
 const HomePage = lazy(() => import("../pages/MainPage"));
 const CharactersPage = lazy(() => import("../pages/CharactersPages"));
-const ErrorPage = lazy(() => import("../hooks/Utils/ErrorPage"));
-const NotFoundPage = lazy(() => import("../hooks/Utils/NotFoundPage "));
+const ErrorPage = lazy(() => import("../pages/ErrorPage"));
+const NotFoundPage = lazy(() => import("../Utils/NotFoundPage "));
 
 export const router = createBrowserRouter([
   {
@@ -15,19 +16,20 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        path: "Home",
         index: true,
         element: <HomePage />,
       },
       {
-        path: "characters",
+        path: "Characters",
         element: <CharactersPage />,
       },
       {
-        path: "error",
+        path: "Network_Error",
         element: <NotFoundPage />,
       },
       {
-        path: "*",
+        path: "404",
         element: <ErrorPage />,
       },
     ],

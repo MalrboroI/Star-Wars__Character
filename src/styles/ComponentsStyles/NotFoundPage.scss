@@ -3,9 +3,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  // background-color: #f8f8f8;
   padding: 20px;
-  margin-top: -1rem;
+  margin-top: -53px;
 
   .error-content {
     max-width: 600px;
@@ -55,16 +54,7 @@
       font-weight: bold;
       transition: all 0.3s ease;
 
-      &.back-button {
-        @include button-primary;
-        font-size: 1.1rem;
-
-        &:hover {
-          color: white;
-          background-color: black;
-        }
-      }
-
+      &.back-button,
       &.home-button {
         @include button-primary;
         font-size: 1.1rem;
@@ -72,6 +62,8 @@
         &:hover {
           color: white;
           background-color: black;
+          border: 1px solid $primary-color;
+          border-radius: 20px;
         }
       }
     }

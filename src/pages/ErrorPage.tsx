@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppContext } from "../../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
 
 const ErrorPage: React.FC = () => {
@@ -14,7 +14,7 @@ const ErrorPage: React.FC = () => {
             ? "Страница не найдена"
             : "Oaoahuwhao wh huwoohwa"}
         </p>
-        <Link to="/" className="not-found-page__link">
+        <Link to="/Home" className="not-found-page__link">
           {language === "Russian" ? "Главная страница" : "Oaoahuwhao rahow"}
         </Link>
       </div>

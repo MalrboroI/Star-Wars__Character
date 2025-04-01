@@ -6,7 +6,8 @@
 
   &__content {
     max-width: 800px;
-    margin: 0 auto;
+    padding-top: 4rem;
+    // margin: 0 auto;
   }
 
   &__title {
@@ -23,7 +24,17 @@
 
   &__button {
     @include button-primary;
+    text-decoration: none;
     font-size: 1.1rem;
     padding: $spacing-md $spacing-xl;
+  }
+
+  &__banner {
+    // position: absolute;
+    display: flex;
+    padding-top: 4rem;
+
+    // z-index: -1;
+    // width: 100%;
   }
 }

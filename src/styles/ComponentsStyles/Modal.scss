@@ -12,12 +12,13 @@
     background-color: #000;
     border-bottom: 1px solid #333;
     color: $primary-color;
-  }
 
-  &__close-button {
-    color: white;
-    &:hover {
+    .close-button {
       color: $primary-color;
+      &:hover {
+        // color: $primary-btn;
+        box-shadow: 0 0px 10px, 4px -5px 49px #ffe81f;
+      }
     }
   }
 
@@ -93,7 +94,7 @@
       }
 
       &__text {
-      text-align: justify;
+        text-align: justify;
         line-height: 1.6;
         color: #bdbdbd;
       }

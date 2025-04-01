@@ -4,13 +4,12 @@ import {
   DialogTitle,
   DialogContent,
   IconButton,
-  CircularProgress,
-  Typography,
   // Divider,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Character } from "../../globalTypes/Types";
 import { fetchRandomCharacterImage } from "../serviceAPI/Api";
+import Loader from "./Loader";
 
 interface ModalProps {
   open: boolean;
@@ -56,7 +55,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
         <IconButton
           aria-label="close"
           onClick={onClose}
-          className="character-modal__close-button"
+          className="close-button"
         >
           <CloseIcon />
         </IconButton>
@@ -65,10 +64,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
       <DialogContent className="character-modal__content">
         <div className="character-modal__content__image-container">
           {imageData.loading ? (
-            <div className="loading-container">
-              <CircularProgress />
-              <Typography>Загрузка данных...</Typography>
-            </div>
+            <Loader />
           ) : imageData.image ? (
             <img
               src={imageData.image}

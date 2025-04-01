@@ -15,6 +15,14 @@
     margin-bottom: $spacing-md;
   }
 
+  .css-1wxecgq-MuiCircularProgress-root{
+    border-radius: 50%;
+    border-top-color: $primary-color;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: $spacing-md;
+    color: $primary-color;
+  }
+
   &__text {
     color: $primary-color;
     font-size: 1.2rem;

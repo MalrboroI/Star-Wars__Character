@@ -19,9 +19,9 @@ const NotFoundPage: React.FC = () => {
 
         <div className="action-buttons">
           <button onClick={() => navigate(-1)} className="back-button">
-            Обновить загрузку
+            Обновить страницу
           </button>
-          <button onClick={() => navigate("/")} className="home-button">
+          <button onClick={() => navigate("/Home")} className="home-button">
             Главная страница
           </button>
         </div>

@@ -25,7 +25,7 @@
   color: $secondary-color;
 }
 
-// Брейкпоинты 
+// Брейкпоинты
 @mixin respond-to($breakpoint) {
   @if $breakpoint == sm {
     @media (max-width: $breakpoint-sm) {
@@ -65,7 +65,7 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: $primary-btn;
     transform: translateY(-2px);
   }
 

@@ -31,13 +31,7 @@ const CharactersPage: React.FC = () => {
         setTotalCount(data.count);
       } catch (error) {
         console.error("Ошибка при загрузки карточек пресонажей:", error);
-        navigate("/error", {
-          state: {
-            errorMessage: "Не удалось загрузить данные персонажей",
-            errorDetails:
-              error instanceof Error ? error.message : "Unknown error",
-          },
-        });
+        navigate("/Network_Error");
       } finally {
         setLoading(false);
       }
@@ -111,7 +105,7 @@ const CharactersPage: React.FC = () => {
         </div>
       )}
 
-      {currentPage * 10 < totalCount && (
+      {currentPage * 9 < totalCount && (
         <button
           className="characters-page__load-more "
           onClick={handleLoadMore}

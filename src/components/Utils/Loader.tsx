@@ -1,10 +1,13 @@
 import React from "react";
+import { CircularProgress, Typography } from "@mui/material";
 
 const Loader: React.FC = () => {
   return (
     <div className="loader">
-      <div className="loader__spinner"></div>
-      <p className="loader__text">Идёт загрузка...</p>
+      <div>
+        <CircularProgress />
+      </div>
+      <Typography className="loader__text">Загрузка данных...</Typography>
     </div>
   );
 };

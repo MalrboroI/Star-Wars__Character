@@ -16,12 +16,15 @@
   }
 
   &__logo {
+    height: 68px;
     margin: 0;
     font-size: 1.8rem;
 
     &:hover {
-      width: 34px;
-      box-shadow: 0 0px 0px, 54px -6px 30px $primary-color;
+      height: 68px;
+      box-shadow: 0 0px 40px #ffe81f, 0px 0px 0px #ffe81f;
+      border-radius: 50%;
+      transition: all 0.2s ease;
     }
   }
 }
