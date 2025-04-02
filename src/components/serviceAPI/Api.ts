@@ -7,8 +7,9 @@ const Image_URL =
   "https://starwars-databank-server.vercel.app/api/v1/characters";
 
 // Парсинг ответа на языке вууки
+
 const parseWookieeResponse = (data: any) => {
-  // Реальная реализация зависит от формата ответа SWAPI на вууки
+  //   // Реальная реализация зависит от формата ответа SWAPI на вууки
   return {
     count: data.oaoohuwhao,
     results: data.rcwochuanaoc.map((char: any) => ({
@@ -21,7 +22,7 @@ const parseWookieeResponse = (data: any) => {
   };
 };
 
-// Экземпляр axios для обработки ошибок
+// Экземпляр axios для обработки ошибки загрузки (по времени)
 const api = axios.create({
   baseURL: Base_URL,
   timeout: 10000,
@@ -56,9 +57,10 @@ export const fetchCharacters = async (
 ) => {
   const url =
     language === "Wookiee"
-      ? `${Base_URL}people/?format=Wookiee&page=${page}`
+      ? `${Base_URL}people/?page=${page}&format=wookiee`
       : `${Base_URL}people/?page=${page}`;
-
+  // people/?page=${page}
+  // `${Base_URL}people/${page}/?format=wookiee`
   try {
     const response = await axios.get(url);
     return language === "Wookiee"
@@ -70,7 +72,7 @@ export const fetchCharacters = async (
   }
 };
 
-// Сделать условие для поиска по имени из SWAPI, и выдачей нужного изображения
+// Сделать условие для поиска по имени из SWAPI, и выдачей нужного изображения!!!!!!!
 export const fetchRandomCharacterImage = async () => {
   try {
     // Сначала получаем общее количество персонажей

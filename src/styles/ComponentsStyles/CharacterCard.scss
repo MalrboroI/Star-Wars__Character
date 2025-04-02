@@ -1,22 +1,3 @@
-
-//   // Модификатор для карточки без изображения
-//   &--no-image {
-//     .character-card__content {
-//       padding-top: $spacing-md;
-//     }
-//   }
-
-//   @include respond-to(sm) {
-//     &__image-container {
-//       height: 150px;
-//     }
-
-//     &__name {
-//       font-size: 1.1rem;
-//     }
-//   }
-// }
-
 .character-card {
   @include card-styles;
   padding: $spacing-md;

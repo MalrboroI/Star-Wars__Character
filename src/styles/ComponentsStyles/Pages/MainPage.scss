@@ -3,22 +3,36 @@
   min-height: calc(100vh - 200px);
   text-align: center;
   padding: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include respond-to(lg) {
+    text-align: justify;
+    flex-direction: row;
+  }
 
   &__content {
     max-width: 800px;
-    padding-top: 4rem;
-    // margin: 0 auto;
+
+    @include respond-to(lg) {
+      min-height: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__title {
     color: $primary-color;
     font-size: 2.5rem;
-    margin-bottom: $spacing-lg;
+    // margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-md;
   }
 
   &__description {
     font-size: 1.2rem;
-    margin-bottom: $spacing-xl;
+    margin-bottom: $spacing-md;
     line-height: 1.6;
   }
 
@@ -27,14 +41,26 @@
     text-decoration: none;
     font-size: 1.1rem;
     padding: $spacing-md $spacing-xl;
+
+    @include respond-to(lg) {
+      font-size: 15px;
+      padding: 1rem 1.5rem;
+
+      position: relative;
+      top: 265px;
+      left: -192px;
+    }
   }
 
   &__banner {
-    // position: absolute;
+    position: relative;
+    right: -69px;
     display: flex;
     padding-top: 4rem;
+    width: 65%;
 
-    // z-index: -1;
-    // width: 100%;
+    @include respond-to(lg) {
+      width: 65%;
+    }
   }
 }

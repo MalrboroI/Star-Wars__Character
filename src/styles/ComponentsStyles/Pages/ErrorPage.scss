@@ -4,6 +4,12 @@
   text-align: center;
   padding: $spacing-xl;
 
+  &__image {
+    position: absolute;
+    z-index: -1;
+    width: 80%;
+  }
+
   &__content {
     max-width: 600px;
     margin: 0 auto;

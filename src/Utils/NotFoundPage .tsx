@@ -21,7 +21,7 @@ const NotFoundPage: React.FC = () => {
           <button onClick={() => navigate(-1)} className="back-button">
             Обновить страницу
           </button>
-          <button onClick={() => navigate("/Home")} className="home-button">
+          <button onClick={() => navigate("/")} className="home-button">
             Главная страница
           </button>
         </div>

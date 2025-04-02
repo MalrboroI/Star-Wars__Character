@@ -6,6 +6,7 @@ import CharacterCard from "../components/CharacterCards";
 import Modal from "../components/Utils/Modals";
 import Loader from "../components/Utils/Loader";
 import Filter from "../components/Utils/Filter";
+import LoadImage from "../../public/image/Frame 1.svg";
 import { Character, Nullable } from "../globalTypes/Types";
 
 const CharactersPage: React.FC = () => {
@@ -26,7 +27,16 @@ const CharactersPage: React.FC = () => {
       setLoading(true);
       try {
         const data = await fetchCharacters(currentPage, language);
-        setCharacters((prev) => [...prev, ...data.results]);
+
+        // API странное себя ведёт, чтобы не было повторения одинаковой интормации с апишки, пришлось ввести фильтрацию по уже добавленым, чтобы не было повторения
+
+        setCharacters((prev) => {
+          const existingIds = new Set(prev.map((char) => char.name));
+          const newChars = data.results.filter(
+            (char) => !existingIds.has(char.name)
+          );
+          return [...prev, ...newChars];
+        });
         setFilteredCharacters((prev) => [...prev, ...data.results]);
         setTotalCount(data.count);
       } catch (error) {
@@ -50,6 +60,7 @@ const CharactersPage: React.FC = () => {
     }
   }, [genderFilter, characters]);
 
+  // Добавляем +1 к первой странице API SWAPI
   const handleLoadMore = () => {
     setCurrentPage((prev) => prev + 1);
   };
@@ -95,9 +106,9 @@ const CharactersPage: React.FC = () => {
         <Loader />
       ) : (
         <div className="characters-page__grid">
-          {filteredCharacters.map((character) => (
+          {filteredCharacters.map((character, index) => (
             <CharacterCard
-              key={`${character.birth_year}+${character.mass}`}
+              key={`${character.birth_year}+${index}`}
               character={character}
               onClick={() => handleCardClick(character)}
             />
@@ -105,19 +116,13 @@ const CharactersPage: React.FC = () => {
         </div>
       )}
 
-      {currentPage * 9 < totalCount && (
+      {currentPage * 10 < totalCount && (
         <button
           className="characters-page__load-more "
           onClick={handleLoadMore}
           disabled={loading}
         >
-          {loading
-            ? language === "Russian"
-              ? "Загрузка..."
-              : "oaoahuwhao..."
-            : language === "Russian"
-            ? "Загрузить еще"
-            : "oaoahuwhao rcwochuanaoc"}
+          <img src={LoadImage} alt="load" />
         </button>
       )}
 

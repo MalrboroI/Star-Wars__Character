@@ -14,13 +14,6 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: $spacing-lg;
     padding: $spacing-md 0;
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
-    // gap: $spacing-lg;
-    // padding: $spacing-md 0;
-
-    // justify-items: center;
-    // border: 2px solid white;
 
     .character-card {
       opacity: 0;
@@ -47,16 +40,17 @@
         }
       }
     }
-
-    @include respond-to(sm) {
-      grid-template-columns: 1fr;
-    }
   }
 
   &__load-more {
-    @include button-primary;
+    background-color: transparent;
     margin: $spacing-xl auto;
     display: block;
+    border: none;
+    cursor: pointer;
+    width: 115px;
+    height: 115px;
+    @include button-pointer;
   }
 }
 

@@ -1,52 +1,62 @@
 .navigation {
   background-color: rgba(0, 0, 0, 0.8);
   padding: $spacing-sm 0;
-  margin-left: 8rem;
+  margin-left: 4rem;
 
   &__list {
-    list-style: none;
     display: flex;
-    justify-content: center;
+    list-style: none;
     margin: 0;
     padding: 0;
   }
 
   &__item {
-    margin: 0 $spacing-lg;
+    margin: 0 $spacing-sm;
+    display: flex;
+    align-items: center;
 
-    &__separator {
+    &.separator {
       &::after {
         position: relative;
-        right: -14px;
-        color: $primary-color;
         content: "|";
+        display: inline-block;
+        top: -1px;
+        left: 16px;
+        color: $primary-color;
       }
     }
   }
 
   &__link {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 150px;
     color: $text-color;
     text-decoration: none;
     font-size: 1.1rem;
     padding: $spacing-sm $spacing-md;
     transition: all 0.3s ease;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 1px solid transparent;
+    font-weight: bold;
 
     &:hover {
       color: $primary-color;
-      background-color: $primary-bgc-btn;
-      border: 1px solid $primary-color;
+      // background-color: $primary-bgc-btn;
+      // border: 1px solid $primary-color;
+      border-bottom: 1px solid $primary-color;
       border-radius: 20px;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
     &--active {
       color: $primary-color;
-      background-color: $primary-bgc-btn;
-      border: 1px solid $primary-color;
-      border-radius: 20px;
-      transition: all 0.3s ease;
+      // background-color: $primary-bgc-btn;
+      // border: 1px solid $primary-color;
+      border-bottom: 1px solid $primary-color;
+      // border-radius: 20px;
+      transition: all 0.2s ease;
       font-weight: bold;
     }
   }

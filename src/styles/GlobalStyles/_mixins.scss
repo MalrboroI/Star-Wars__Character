@@ -27,16 +27,12 @@
 
 // Брейкпоинты
 @mixin respond-to($breakpoint) {
-  @if $breakpoint == sm {
-    @media (max-width: $breakpoint-sm) {
-      @content;
-    }
-  } @else if $breakpoint == md {
+  @if $breakpoint == md {
     @media (max-width: $breakpoint-md) {
       @content;
     }
   } @else if $breakpoint == lg {
-    @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl) {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-xl) {
       @content;
     }
   } @else if $breakpoint == xl {
@@ -57,20 +53,36 @@
 @mixin button-primary {
   background-color: $primary-color;
   color: $secondary-color;
-  border: none;
+  // border: none;
   padding: $spacing-sm $spacing-lg;
-  border-radius: 4px;
+  border: 1px solid $primary-color;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: $primary-btn;
+    background-color: $primary-color__active;
     transform: translateY(-2px);
   }
 
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+}
+
+// Button Pointer
+@mixin button-pointer {
+  &:hover {
+    border-radius: 50%;
+    box-shadow: 0 0px 10px, 4px -5px 49px $primary-color;
+  }
+
+  &:active {
+    &:hover {
+      border-radius: 50%;
+      box-shadow: 0 0px 10px, 4px -5px 49px $primary-color__active;
+    }
   }
 }

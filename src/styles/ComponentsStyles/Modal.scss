@@ -15,10 +15,7 @@
 
     .close-button {
       color: $primary-color;
-      &:hover {
-        // color: $primary-btn;
-        box-shadow: 0 0px 10px, 4px -5px 49px #ffe81f;
-      }
+      @include button-pointer;
     }
   }
 
@@ -55,7 +52,7 @@
         font-style: italic;
       }
 
-      @media (min-width: 900px) {
+      @include respond-to(lg) {
         min-width: 350px;
         border-right: 1px solid #333;
       }
@@ -102,9 +99,9 @@
   }
 }
 
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 300px;
-}
+// .loading-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 300px;
+// }

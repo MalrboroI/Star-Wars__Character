@@ -24,13 +24,13 @@ const MainPage: React.FC = () => {
             ? "Вы можете узнать всю информацию о ваших любимых персонажах"
             : "Вууууки"}
         </p>
+      </div>
         <Link to="/Characters" className="home-page__button">
           {language === "Russian"
             ? "Посмотреть персонажей"
             : "Oaoahuwhao rcwochuanaoc"}
         </Link>
             <img className="home-page__banner" src={Banner} alt="" />
-      </div>
     </div>
   );
 };
