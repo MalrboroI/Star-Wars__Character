@@ -1,6 +1,10 @@
 import axios from "axios";
+import { WookieeCharacter, Character } from "../../globalTypes/Types";
 
-// Работаем с сервисом (SWAPI The Star Wars API), url: https://swapi.dev/. Для тестирования ответа от API: https://swapi.dev/
+// Работаем с сервисом (SWAPI The Star Wars API), url: https://swapi.dev/documentation. Для тестирования ответа от API: https://swapi.dev/
+
+//Для перевода на язык Вууки(Шайривук) используем: https://anythingtranslate.com/translators/shyriiwook-star-wars-languages-translator/
+
 const Base_URL = "https://swapi.dev/api/";
 
 const Image_URL =
@@ -8,11 +12,11 @@ const Image_URL =
 
 // Парсинг ответа на языке вууки
 
-const parseWookieeResponse = (data: any) => {
+const parseWookieeResponse = (data: WookieeCharacter) => {
   //   // Реальная реализация зависит от формата ответа SWAPI на вууки
   return {
     count: data.oaoohuwhao,
-    results: data.rcwochuanaoc.map((char: any) => ({
+    results: data.rcwochuanaoc.map((char: WookieeCharacter) => ({
       name: char.whrascwo,
       height: char.acwoahrracao,
       mass: char.scracc,
@@ -42,6 +46,7 @@ api.interceptors.response.use(
 );
 
 // Конфигурация axios с таймаутом и повторными попытками // Нужна ли она?
+
 // const api = axios.create({
 //   timeout: 10000,
 //   retry: 3,
@@ -57,10 +62,10 @@ export const fetchCharacters = async (
 ) => {
   const url =
     language === "Wookiee"
-      ? `${Base_URL}people/?page=${page}&format=wookiee`
+      ? `${Base_URL}people/${page}/?format=wookiee`
       : `${Base_URL}people/?page=${page}`;
   // people/?page=${page}
-  // `${Base_URL}people/${page}/?format=wookiee`
+  // `${Base_URL}people/${page}/?format=wookiee` people/1/?format=wookiee
   try {
     const response = await axios.get(url);
     return language === "Wookiee"
@@ -73,30 +78,31 @@ export const fetchCharacters = async (
 };
 
 // Сделать условие для поиска по имени из SWAPI, и выдачей нужного изображения!!!!!!!
-export const fetchRandomCharacterImage = async () => {
+
+export const fetchCharacterImage = async (characterName: string) => {
   try {
-    // Сначала получаем общее количество персонажей
-    const countResponse = await axios.get(`${Image_URL}?limit=1`);
-    const totalCount = countResponse.data.total;
-
-    // Генерируем случайный индекс
-    const randomIndex = Math.floor(Math.random() * totalCount);
-
-    // Получаем случайного персонажа
+    // Ищем персонажа по точному имени
     const response = await axios.get(
-      `${Image_URL}?limit=1&skip=${randomIndex}`
+      `${Image_URL}?name=${encodeURIComponent(characterName)}`
     );
 
     if (response.data.data.length > 0) {
+      // Находим точное совпадение имени
+      const exactMatch = response.data.data.find(
+        (char: Character) =>
+          char.name.toLowerCase() === characterName.toLowerCase()
+      );
+
+      const characterData = exactMatch || response.data.data[0];
+
       return {
-        image: response.data.data[0].image,
-        description:
-          response.data.data[0].description || "Нет нужного описания",
+        image: characterData.image,
+        description: characterData.description || "Нет описания",
       };
     }
     return null;
   } catch (error) {
-    console.error("Ошибка получения изображение персонажа:", error);
+    console.error("Ошибка получения изображения персонажа:", error);
     return null;
   }
 };

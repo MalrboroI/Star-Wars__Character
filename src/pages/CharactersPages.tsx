@@ -33,7 +33,7 @@ const CharactersPage: React.FC = () => {
         setCharacters((prev) => {
           const existingIds = new Set(prev.map((char) => char.name));
           const newChars = data.results.filter(
-            (char) => !existingIds.has(char.name)
+            (char: Character) => !existingIds.has(char.name)
           );
           return [...prev, ...newChars];
         });
@@ -78,25 +78,27 @@ const CharactersPage: React.FC = () => {
     <div className="characters-page">
       <h1 className="characters-page__title">
         {totalCount}{" "}
-        {language === "Russian" ? "Персонажей для выбора" : "rcwochuanaoc"}
+        {language === "Russian"
+          ? "Персонажей для выбора"
+          : "Grrrrooaarr rhyyi l'wa"}
       </h1>
 
       <Filter
         options={[
-          { value: "all", label: language === "Russian" ? "Все" : "rahow" },
+          { value: "all", label: language === "Russian" ? "Все" : "Roo" },
           {
             value: "male",
-            label: language === "Russian" ? "Мужской" : "scraanwo",
+            label: language === "Russian" ? "Мужской" : "Aarrrgghh",
           },
           {
             value: "female",
-            label: language === "Russian" ? "Женский" : "wwwoscraanwo",
+            label: language === "Russian" ? "Женский" : "Rrraaarr wrrrraaw",
           },
           {
             value: "hermaphrodite",
-            label: language === "Russian" ? "Гермафродит" : "akwooo",
+            label: language === "Russian" ? "Гермафродит" : "Rrrrwwww",
           },
-          { value: "none", label: language === "Russian" ? "Нет" : "wh/ra" },
+          { value: "none", label: language === "Russian" ? "Нет" : "Urrah" },
         ]}
         selectedValue={genderFilter}
         onChange={setGenderFilter}

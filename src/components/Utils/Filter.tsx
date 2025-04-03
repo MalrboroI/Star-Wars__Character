@@ -1,10 +1,5 @@
 import React from "react";
-
-interface FilterProps {
-  options: { value: string; label: string }[];
-  selectedValue: string;
-  onChange: (value: string) => void;
-}
+import { FilterProps } from "../../globalTypes/Types";
 
 const Filter: React.FC<FilterProps> = ({
   options,
@@ -19,7 +14,11 @@ const Filter: React.FC<FilterProps> = ({
         onChange={(e) => onChange(e.target.value)}
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <option
+            className="filter__select__option"
+            key={option.value}
+            value={option.value}
+          >
             {option.label}
           </option>
         ))}

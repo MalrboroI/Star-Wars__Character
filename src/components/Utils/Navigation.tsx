@@ -15,7 +15,7 @@ const Navigation: React.FC = () => {
               `navigation__link ${isActive ? "navigation__link--active" : ""}`
             }
           >
-            {language === "Russian" ? "Главная" : "Rahow"}
+            {language === "Russian" ? "Главная" : "Rrraaawww"}
           </NavLink>
         </li>
         <li className="navigation__item">
@@ -25,7 +25,7 @@ const Navigation: React.FC = () => {
               `navigation__link ${isActive ? "navigation__link--active" : ""}`
             }
           >
-            {language === "Russian" ? "Персонажи" : "Rcwochuanaoc"}
+            {language === "Russian" ? "Персонажи" : "Grrrowwwaa"}
           </NavLink>
         </li>
       </ul>

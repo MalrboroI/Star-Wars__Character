@@ -12,25 +12,20 @@ const MainPage: React.FC = () => {
         <h1 className="home-page__title">
           {language === "Russian"
             ? "Добро пожаловать в Star Wars API"
-            : "Oaoahuwhao wh Star Wars API"}
+            : "Waww'rrra grrraakk hrrr Star Wars API"}
         </h1>
         <p className="home-page__description">
           {language === "Russian"
-            ? "Найдите всех своих любимых персонажей"
-            : "Scraan oaoahuwhao Star Wars"}
-        </p>
-        <p className="home-page__description">
-          {language === "Russian"
             ? "Вы можете узнать всю информацию о ваших любимых персонажах"
-            : "Вууууки"}
+            : "Rraaarrr! Wrrroooah, hurrrrggh aaahh grruuummm naash wookee wrryya!"}
         </p>
       </div>
-        <Link to="/Characters" className="home-page__button">
-          {language === "Russian"
-            ? "Посмотреть персонажей"
-            : "Oaoahuwhao rcwochuanaoc"}
-        </Link>
-            <img className="home-page__banner" src={Banner} alt="" />
+      <Link to="/Characters" className="home-page__button">
+        {language === "Russian"
+          ? "Посмотреть персонажей"
+          : "Rrrrrr! Wrrrawrr hwwurragrr!"}
+      </Link>
+      <img className="home-page__banner" src={Banner} alt="" />
     </div>
   );
 };

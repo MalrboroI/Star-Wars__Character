@@ -1,9 +1,5 @@
 import { createContext, useContext, useState } from "react";
-
-type AppContextType = {
-  language: "Russian" | "Wookiee";
-  toggleLanguage: () => void;
-};
+import { AppContextType } from "../globalTypes/Types";
 
 const AppContext = createContext<AppContextType>({
   language: "Russian",
