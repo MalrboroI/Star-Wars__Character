@@ -42,6 +42,7 @@ export const FetchCharacters = async (
     // Для Wookiee делаем 10 последовательных запросов
     const results: Character[] = [];
     for (let i = (page - 1) * 10 + 1; i <= page * 10; i++) {
+      // for (let i = page * 10; i <= page * 10; i++) {
       try {
         const response = await Api.get<WookieeCharacter>(
           `${Base_URL}people/${i}/?format=wookiee`
@@ -60,7 +61,7 @@ export const FetchCharacters = async (
     }
 
     return {
-      count: 82, // Общее количество объектов
+      count: 82,
       results,
       next: page * 10 < 82 ? `page=${page + 1}` : null,
     };

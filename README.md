@@ -1,54 +1,52 @@
-# React + TypeScript + Vite
+# ⚛️ React + TypeScript + SCSS + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот проект создан на основе **React**, **TypeScript**, **SCSS** и **Vite**.  
+В нем реализованы современные подходы к разработке, удобная архитектура и оптимизированный пользовательский опыт.
 
-Currently, two official plugins are available:
+## 🚀 Запуск проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Клонируйте репозиторий**:
+   ```sh
+   git clone <URL_репозитория>
+   cd <название_проекта>
+   Установите зависимости:
+   sh
+   Copy code
+   yarn
+   Запустите проект локально:
+   sh
+   Copy code
+   yarn dev
+   📌 Используемые технологии и паттерны
+   🔹 Routing – для удобной навигации и масштабируемости.
+   ```
 
-## Expanding the ESLint configuration
+🔹 Методология БЭМ – для структурированного нейминга CSS-классов.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🔹 Lazy Loading (ленивая загрузка) – для оптимизированной загрузки маршрутов.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+🔹 React Context – для эффективного управления состоянием.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🔹 SCSS Mixins и Variables – для гибкой настройки и быстрого редактирования стилей.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+🔹 Медиазапросы – для адаптивного отображения на разных разрешениях экрана.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+🎨 Функциональность
+✔️ Индикатор загрузки – отображается при загрузке карточек и изображений с API.
+
+✔️ Фильтрация данных – метод .filter предотвращает повторяющиеся данные из API.
+
+✔️ Перевод на язык Вукки – переводится как меню, так и информация на карточках.
+
+✔️ Пагинация – загружает новые карточки, с ограничением по количеству объектов.
+
+🃏 Карточки персонажей
+📌 Карточка содержит:
+
+Имя персонажа
+Основную информацию
+📌 Дополнительные возможности:
+
+Кликабельность – при нажатии открывается модальное окно с подробной информацией.
+Гендерная иконка – отображается в модальном окне в зависимости от пола персонажа.
+💡 Проект создан для демонстрации работы с API, роутингом и современными технологиями в React.
