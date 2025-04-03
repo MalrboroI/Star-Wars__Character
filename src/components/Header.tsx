@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LanguageToggle from "../components/Utils/LanguageToggle";
 import Navigation from "./Utils/Navigation";
-import Logo from "../../public/image/Logo.svg";
+import Logo from "../image/Logo.svg";
 
 const Header: React.FC = () => {
   return (

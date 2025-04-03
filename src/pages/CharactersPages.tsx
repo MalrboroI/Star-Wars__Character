@@ -6,7 +6,7 @@ import CharacterCard from "../components/CharacterCards";
 import Modal from "../components/Utils/Modals";
 import Loader from "../components/Utils/Loader";
 import Filter from "../components/Utils/Filter";
-import LoadImage from "../../public/image/Frame 1.svg";
+import LoadImage from "../image/Frame 1.svg";
 import { Character, Nullable } from "../globalTypes/Types";
 
 const CharactersPage: React.FC = () => {

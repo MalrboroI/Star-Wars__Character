@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
-import Banner from "../../public/image/BannerComplete.svg";
+import Banner from "../image/BannerComplete.svg";
 import { Link } from "react-router-dom";
 
 const MainPage: React.FC = () => {
