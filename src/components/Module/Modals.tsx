@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ModalProps } from "../../globalTypes/Types";
-import { fetchCharacterImage } from "../serviceAPI/Api";
+import { FetchCharacterImage } from "../ServiceAPI/Api";
 import { useAppContext } from "../../context/AppContext";
 import { Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,6 +11,7 @@ import FemeleImage from "../../image/IconFemale.svg";
 
 const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
   const { language } = useAppContext();
+  const navigate = useNavigate();
 
   const [imageData, setImageData] = useState<{
     image?: string;
@@ -23,7 +25,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
       if (open && character) {
         setImageData({ loading: true });
         try {
-          const data = await fetchCharacterImage(character.name);
+          const data = await FetchCharacterImage(character.name);
 
           if (data) {
             setImageData({
@@ -43,6 +45,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
             loading: false,
             error: "Ошибка загрузки изображения",
           });
+          navigate("/Network_Error");
         }
       }
     };
@@ -53,7 +56,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
     } else {
       loadCharacterImage();
     }
-  }, [open, character]);
+  }, [open, character, navigate]);
 
   if (!character) return null;
 
@@ -135,7 +138,8 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
             <span>{character.mass}</span>
           </div>
           {character.birth_year !== "n/a" &&
-            character.birth_year !== "unknown" && (
+            character.birth_year !== "unknown" &&
+            character.birth_year !== "huwhorwhooohwh" && (
               <div className="info-row">
                 <span className="info-label">
                   {language === "Russian"
@@ -145,14 +149,16 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
                 <span>{character.birth_year}</span>
               </div>
             )}
-          {character.gender !== "n/a" && character.gender !== "unknown" && (
-            <div className="info-row">
-              <span className="info-label">
-                {language === "Russian" ? "Пол: " : "Rrwowhwaworc: "}
-              </span>
-              <span>{character.gender}</span>
-            </div>
-          )}
+          {character.gender !== "n/a" &&
+            character.gender !== "unknown" &&
+            character.gender !== "wh/ra" && (
+              <div className="info-row">
+                <span className="info-label">
+                  {language === "Russian" ? "Пол: " : "Rrwowhwaworc: "}
+                </span>
+                <span>{character.gender}</span>
+              </div>
+            )}
         </div>
 
         {imageData.description && (

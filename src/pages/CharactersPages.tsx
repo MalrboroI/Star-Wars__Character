@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
-import { fetchCharacters } from "../components/serviceAPI/Api";
+import { FetchCharacters } from "../components/ServiceAPI/Api";
 import CharacterCard from "../components/CharacterCards";
-import Modal from "../components/Utils/Modals";
-import Loader from "../components/Utils/Loader";
-import Filter from "../components/Utils/Filter";
+import Modal from "../components/Module/Modals";
+import Loader from "../components/Module/Loader";
+import Filter from "../components/Module/Filter";
 import LoadImage from "../image/Frame 1.svg";
 import { Character, Nullable } from "../globalTypes/Types";
 
 const CharactersPage: React.FC = () => {
   const { language } = useAppContext();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState(true);
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
@@ -24,35 +24,31 @@ const CharactersPage: React.FC = () => {
 
   const [hasMore, setHasMore] = useState(true);
 
-  // useEffect(() => {
-  //   const loadCharacters = async () => {
   const loadCharacters = useCallback(async () => {
+    if (!hasMore) return;
     setLoading(true);
     try {
-      const data = await fetchCharacters(currentPage, language);
+      const data = await FetchCharacters(currentPage, language);
 
       // API странное себя ведёт, чтобы не было повторения одинаковой интормации с апишки, пришлось ввести фильтрацию по уже добавленым, чтобы не было повторения
 
       setCharacters((prev) => {
         const existingIds = new Set(prev.map((char) => char.name));
-        const newChars = data.results.filter(
+        const newCharacters = data.results.filter(
           (char: Character) => !existingIds.has(char.name)
         );
-        return [...prev, ...newChars];
+        return [...prev, ...newCharacters];
       });
       setFilteredCharacters((prev) => [...prev, ...data.results]);
       setHasMore(data.next !== null);
       setTotalCount(data.count);
     } catch (error) {
       console.error("Ошибка при загрузки карточек пресонажей:", error);
-      navigate("/Network_Error");
+      // navigate("/404");
     } finally {
       setLoading(false);
     }
-    // };
-
-    // loadCharacters();
-  }, [currentPage, language, navigate]);
+  }, [currentPage, language, hasMore]);
 
   useEffect(() => {
     if (genderFilter === "all") {
@@ -64,7 +60,6 @@ const CharactersPage: React.FC = () => {
     }
   }, [genderFilter, characters]);
 
-  // Добавляем +1 к первой странице API SWAPI
   const handleLoadMore = () => {
     if (hasMore) {
       setCurrentPage((prev) => prev + 1);
@@ -88,7 +83,7 @@ const CharactersPage: React.FC = () => {
     <div className="characters-page">
       <h1 className="characters-page__title">
         {totalCount}{" "}
-        {language === "Russian" ? "Персонажей для выбора" : "Rcwochuanaoc"}
+        {language === "Russian" ? "Персонажей для выбора" : "rcwochuanaoc"}
       </h1>
 
       <Filter

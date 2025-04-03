@@ -1,8 +1,8 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import App from "./../App";
+import App from "../App";
 import React, { Suspense } from "react";
-import Loader from "../components/Utils/Loader";
+import Loader from "../components/Module/Loader";
 import HomePage from "../pages/MainPage";
 import CharactersPage from "../pages/CharactersPages";
 

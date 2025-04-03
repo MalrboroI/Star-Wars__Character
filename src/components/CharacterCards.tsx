@@ -13,18 +13,21 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
       <h3 className="character-card__title">{character.name}</h3>
       <div className="character-card__info">
         {character.birth_year !== "unknown" &&
-          character.birth_year !== "n/a" && (
+          character.birth_year !== "n/a" &&
+          character.birth_year !== "huwhorwhooohwh" && (
             <span className="character-card__tag character-card__tag--birth">
               {character.birth_year}
             </span>
           )}
-        {character.gender !== "n/a" && character.gender !== "unknown" && (
-          <span
-            className={`character-card__tag character-card__tag--${character.gender}`}
-          >
-            {character.gender}
-          </span>
-        )}
+        {character.gender !== "n/a" &&
+          character.gender !== "unknown" &&
+          character.gender !== "wh/ra" && (
+            <span
+              className={`character-card__tag character-card__tag--${character.gender}`}
+            >
+              {character.gender}
+            </span>
+          )}
       </div>
       <div className="character-card__details">
         <p>

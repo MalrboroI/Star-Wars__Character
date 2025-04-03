@@ -12,12 +12,12 @@ const Image_URL =
   "https://starwars-databank-server.vercel.app/api/v1/characters";
 
 // Axios для обработки ошибки загрузки (по времени)
-const api = axios.create({
+const Api = axios.create({
   baseURL: Base_URL,
-  timeout: 15000,
+  timeout: 25000,
 });
 
-api.interceptors.response.use(
+Api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.code === "ECONNABORTED") {
@@ -30,7 +30,7 @@ api.interceptors.response.use(
   }
 );
 
-export const fetchCharacters = async (
+export const FetchCharacters = async (
   page: number = 1,
   language: "Russian" | "Wookiee" = "Russian"
 ): Promise<{
@@ -43,7 +43,7 @@ export const fetchCharacters = async (
     const results: Character[] = [];
     for (let i = (page - 1) * 10 + 1; i <= page * 10; i++) {
       try {
-        const response = await api.get<WookieeCharacter>(
+        const response = await Api.get<WookieeCharacter>(
           `${Base_URL}people/${i}/?format=wookiee`
         );
         results.push({
@@ -54,8 +54,7 @@ export const fetchCharacters = async (
           gender: response.data.rrwowhwaworc,
         });
       } catch (error) {
-        console.error(`Error loading Wookiee character ${i}:`, error);
-        // Пропускаем несуществующие ID
+        console.error(`Ошибка при загрузке описание для Вууки ${i}:`, error);
         continue;
       }
     }
@@ -66,14 +65,14 @@ export const fetchCharacters = async (
       next: page * 10 < 82 ? `page=${page + 1}` : null,
     };
   } else {
-    const response = await api.get(`${Base_URL}people/?page=${page}`);
+    const response = await Api.get(`${Base_URL}people/?page=${page}`);
     return response.data;
   }
 };
 
 // Сделать условие для поиска по имени из SWAPI, и выдачей нужного изображения!!!!!!!
 
-export const fetchCharacterImage = async (characterName: string) => {
+export const FetchCharacterImage = async (characterName: string) => {
   try {
     // Ищем персонажа по точному имени
     const response = await axios.get(

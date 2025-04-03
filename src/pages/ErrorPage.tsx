@@ -17,7 +17,7 @@ const ErrorPage: React.FC = () => {
         <h1 className="not-found-page__title">404</h1>
         <p className="not-found-page__message">
           {language === "Russian"
-            ? "Страница не найдена"
+            ? "Ошибка загрузки с сервера"
             : "Oaoahuwhao wh huwoohwa"}
         </p>
         <Link to="/" className="not-found-page__link">

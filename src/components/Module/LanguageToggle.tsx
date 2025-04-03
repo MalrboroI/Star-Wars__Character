@@ -16,9 +16,11 @@ const LanguageToggle: React.FC = () => {
         }
       >
         <span className="language-toggle__indicator">
-        <div className="language-toggle__status">
-        {language === "Russian" ? "🌍 language: Russian" : "🌍 language: Wookiee"}
-      </div>
+          <div className="language-toggle__status">
+            {language === "Russian"
+              ? "🌍 language: Russian"
+              : "🌍 language: Wookiee"}
+          </div>
         </span>
       </button>
     </div>
