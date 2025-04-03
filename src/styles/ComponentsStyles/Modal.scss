@@ -16,6 +16,21 @@
     .close-button {
       color: $primary-color;
       @include button-pointer;
+
+      .css-1umw9bq-MuiSvgIcon-root {
+        font-size: 2rem;
+      }
+    }
+
+    .gender-image {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &__svg {
+        width: 5rem;
+      }
     }
   }
 

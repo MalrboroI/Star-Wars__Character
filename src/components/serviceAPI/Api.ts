@@ -7,29 +7,14 @@ import { WookieeCharacter, Character } from "../../globalTypes/Types";
 
 const Base_URL = "https://swapi.dev/api/";
 
+// Изображение с API "starwars-databank"
 const Image_URL =
   "https://starwars-databank-server.vercel.app/api/v1/characters";
 
-// Парсинг ответа на языке вууки
-
-const parseWookieeResponse = (data: WookieeCharacter) => {
-  //   // Реальная реализация зависит от формата ответа SWAPI на вууки
-  return {
-    count: data.oaoohuwhao,
-    results: data.rcwochuanaoc.map((char: WookieeCharacter) => ({
-      name: char.whrascwo,
-      height: char.acwoahrracao,
-      mass: char.scracc,
-      birth_year: char.acooscwoohoorcanwa,
-      gender: char.rrwowhwaworc,
-    })),
-  };
-};
-
-// Экземпляр axios для обработки ошибки загрузки (по времени)
+// Axios для обработки ошибки загрузки (по времени)
 const api = axios.create({
   baseURL: Base_URL,
-  timeout: 10000,
+  timeout: 15000,
 });
 
 api.interceptors.response.use(
@@ -45,35 +30,44 @@ api.interceptors.response.use(
   }
 );
 
-// Конфигурация axios с таймаутом и повторными попытками // Нужна ли она?
-
-// const api = axios.create({
-//   timeout: 10000,
-//   retry: 3,
-//   retryDelay: 1000,
-// });
-// api.interceptors.response.use(undefined, (error) => {
-//   const config = error.config;
-//   if (!config || !config.retry) return Promise.reject(error);
-
 export const fetchCharacters = async (
   page: number = 1,
   language: "Russian" | "Wookiee" = "Russian"
-) => {
-  const url =
-    language === "Wookiee"
-      ? `${Base_URL}people/${page}/?format=wookiee`
-      : `${Base_URL}people/?page=${page}`;
-  // people/?page=${page}
-  // `${Base_URL}people/${page}/?format=wookiee` people/1/?format=wookiee
-  try {
-    const response = await axios.get(url);
-    return language === "Wookiee"
-      ? parseWookieeResponse(response.data)
-      : response.data;
-  } catch (error) {
-    console.error("Ошибка при загрузке персонажей:", error);
-    throw error;
+): Promise<{
+  count: number;
+  results: Character[];
+  next: string | null;
+}> => {
+  if (language === "Wookiee") {
+    // Для Wookiee делаем 10 последовательных запросов
+    const results: Character[] = [];
+    for (let i = (page - 1) * 10 + 1; i <= page * 10; i++) {
+      try {
+        const response = await api.get<WookieeCharacter>(
+          `${Base_URL}people/${i}/?format=wookiee`
+        );
+        results.push({
+          name: response.data.whrascwo,
+          height: response.data.acwoahrracao,
+          mass: response.data.scracc,
+          birth_year: response.data.rhahrcaoac_roworarc,
+          gender: response.data.rrwowhwaworc,
+        });
+      } catch (error) {
+        console.error(`Error loading Wookiee character ${i}:`, error);
+        // Пропускаем несуществующие ID
+        continue;
+      }
+    }
+
+    return {
+      count: 82, // Общее количество объектов
+      results,
+      next: page * 10 < 82 ? `page=${page + 1}` : null,
+    };
+  } else {
+    const response = await api.get(`${Base_URL}people/?page=${page}`);
+    return response.data;
   }
 };
 

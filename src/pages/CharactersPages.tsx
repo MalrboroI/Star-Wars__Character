@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { fetchCharacters } from "../components/serviceAPI/Api";
@@ -22,32 +22,36 @@ const CharactersPage: React.FC = () => {
   const [genderFilter, setGenderFilter] = useState<string>("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const loadCharacters = async () => {
-      setLoading(true);
-      try {
-        const data = await fetchCharacters(currentPage, language);
+  const [hasMore, setHasMore] = useState(true);
 
-        // API странное себя ведёт, чтобы не было повторения одинаковой интормации с апишки, пришлось ввести фильтрацию по уже добавленым, чтобы не было повторения
+  // useEffect(() => {
+  //   const loadCharacters = async () => {
+  const loadCharacters = useCallback(async () => {
+    setLoading(true);
+    try {
+      const data = await fetchCharacters(currentPage, language);
 
-        setCharacters((prev) => {
-          const existingIds = new Set(prev.map((char) => char.name));
-          const newChars = data.results.filter(
-            (char: Character) => !existingIds.has(char.name)
-          );
-          return [...prev, ...newChars];
-        });
-        setFilteredCharacters((prev) => [...prev, ...data.results]);
-        setTotalCount(data.count);
-      } catch (error) {
-        console.error("Ошибка при загрузки карточек пресонажей:", error);
-        navigate("/Network_Error");
-      } finally {
-        setLoading(false);
-      }
-    };
+      // API странное себя ведёт, чтобы не было повторения одинаковой интормации с апишки, пришлось ввести фильтрацию по уже добавленым, чтобы не было повторения
 
-    loadCharacters();
+      setCharacters((prev) => {
+        const existingIds = new Set(prev.map((char) => char.name));
+        const newChars = data.results.filter(
+          (char: Character) => !existingIds.has(char.name)
+        );
+        return [...prev, ...newChars];
+      });
+      setFilteredCharacters((prev) => [...prev, ...data.results]);
+      setHasMore(data.next !== null);
+      setTotalCount(data.count);
+    } catch (error) {
+      console.error("Ошибка при загрузки карточек пресонажей:", error);
+      navigate("/Network_Error");
+    } finally {
+      setLoading(false);
+    }
+    // };
+
+    // loadCharacters();
   }, [currentPage, language, navigate]);
 
   useEffect(() => {
@@ -62,7 +66,9 @@ const CharactersPage: React.FC = () => {
 
   // Добавляем +1 к первой странице API SWAPI
   const handleLoadMore = () => {
-    setCurrentPage((prev) => prev + 1);
+    if (hasMore) {
+      setCurrentPage((prev) => prev + 1);
+    }
   };
 
   const handleCardClick = (character: Character) => {
@@ -74,13 +80,15 @@ const CharactersPage: React.FC = () => {
     setIsModalOpen(false);
   };
 
+  useEffect(() => {
+    loadCharacters();
+  }, [loadCharacters]);
+
   return (
     <div className="characters-page">
       <h1 className="characters-page__title">
         {totalCount}{" "}
-        {language === "Russian"
-          ? "Персонажей для выбора"
-          : "Grrrrooaarr rhyyi l'wa"}
+        {language === "Russian" ? "Персонажей для выбора" : "Rcwochuanaoc"}
       </h1>
 
       <Filter
@@ -98,7 +106,7 @@ const CharactersPage: React.FC = () => {
             value: "hermaphrodite",
             label: language === "Russian" ? "Гермафродит" : "Rrrrwwww",
           },
-          { value: "none", label: language === "Russian" ? "Нет" : "Urrah" },
+          { value: "n/a", label: language === "Russian" ? "Нет" : "Urrah" },
         ]}
         selectedValue={genderFilter}
         onChange={setGenderFilter}
@@ -118,15 +126,18 @@ const CharactersPage: React.FC = () => {
         </div>
       )}
 
-      {currentPage * 10 < totalCount && (
-        <button
-          className="characters-page__load-more "
-          onClick={handleLoadMore}
-          disabled={loading}
-        >
-          <img src={LoadImage} alt="load" />
-        </button>
-      )}
+      {currentPage * 10 < totalCount &&
+        (loading ? (
+          <Loader />
+        ) : (
+          <button
+            className="characters-page__load-more "
+            onClick={handleLoadMore}
+            disabled={loading}
+          >
+            <img src={LoadImage} alt="load" />
+          </button>
+        ))}
 
       {selectedCharacter && (
         <Modal

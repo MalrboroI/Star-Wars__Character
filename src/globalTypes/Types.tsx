@@ -1,29 +1,21 @@
 export type Nullable<T> = T | null;
 
-// export type Dictionary<T> = {
-//   [key: string]: T;
-// };
-
-// Убрать лишнее
+// Типы для API на английском языке
 export interface Character {
   name: string;
   height: string;
   mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
   birth_year: string;
   gender: string;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
-  created: string;
-  edited: string;
-  url: string;
-  id: number;
   image?: string;
+}
+// Типы для API на языке вуки
+export interface WookieeCharacter {
+  whrascwo: string; // name
+  acwoahrracao: string; // height
+  scracc: string; // mass
+  rhahrcaoac_roworarc: string; // birth_year
+  rrwowhwaworc: string; // gender
 }
 
 export interface AppContextType {
@@ -38,6 +30,7 @@ export interface ModalProps {
   character: Nullable<Character>;
 }
 
+// Типы для карточек
 export interface CharacterCardProps {
   character: Character;
   onClick: () => void;
@@ -53,15 +46,4 @@ export interface FilterProps {
   options: FilterOption[];
   selectedValue: string;
   onChange: (value: string) => void;
-}
-
-// Типы для API на языке вуки
-export interface WookieeCharacter {
-  whrascwo: string; // name
-  acwoahrracao: string; // height
-  scracc: string; // mass
-  acooscwoohoorcanwa: string; // birth_year
-  rrwowhwaworc: string; // gender
-  oaoohuwhao: number; // count
-  rcwochuanaoc: WookieeCharacter[]; // results
 }
