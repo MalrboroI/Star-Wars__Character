@@ -1,8 +1,6 @@
-import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 import CharacterCard from "../components/CharacterCards";
 import "@testing-library/jest-dom";
-import "@types/jest";
 
 // Мокаем контекст
 jest.mock("../src/context/AppContext", () => ({
