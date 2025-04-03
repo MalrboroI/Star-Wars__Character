@@ -42,13 +42,15 @@
       border: 1px solid #4fc1e9;
     }
 
-    &--male {
+    &--male,
+    &--scraanwo {
       background-color: rgba(79, 193, 233, 0.2);
       color: #4fc1e9;
       border: 1px solid #4fc1e9;
     }
 
-    &--female {
+    &--female,
+    &--wwwoscraanwo {
       background-color: rgba(237, 100, 166, 0.2);
       color: #ed64a6;
       border: 1px solid #ed64a6;

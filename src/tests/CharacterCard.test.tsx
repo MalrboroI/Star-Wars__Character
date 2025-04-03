@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import CharacterCard from "../src/components/CharacterCards";
+import CharacterCard from "../components/CharacterCards";
 import "@testing-library/jest-dom";
 import "@types/jest";
 
