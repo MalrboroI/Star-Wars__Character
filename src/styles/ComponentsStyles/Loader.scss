@@ -11,14 +11,14 @@
     border: 5px solid rgba(255, 232, 31, 0.3);
     border-radius: 50%;
     border-top-color: $primary-color;
-    animation: spin 1s ease-in-out infinite;
+    animation: spinner 1s ease-in-out infinite;
     margin-bottom: $spacing-md;
   }
 
-  .css-1wxecgq-MuiCircularProgress-root{
+  .css-1wxecgq-MuiCircularProgress-root {
     border-radius: 50%;
     border-top-color: $primary-color;
-    animation: spin 1s ease-in-out infinite;
+    animation: spinner 1s ease-in-out infinite;
     margin-bottom: $spacing-md;
     color: $primary-color;
   }
@@ -29,7 +29,7 @@
   }
 }
 
-@keyframes spin {
+@keyframes spinner {
   to {
     transform: rotate(360deg);
   }

@@ -4,15 +4,15 @@
 
 // Стили компонентов
 @import "./ComponentsStyles/Pages/MainPage.scss";
-@import "./ComponentsStyles/Pages/CharactersPage.scss";
-@import "./ComponentsStyles/CharacterCard.scss";
-@import "./ComponentsStyles/Pages/ErrorPage.scss";
 @import "./ComponentsStyles/Header.scss";
 @import "./ComponentsStyles/Navigation.scss";
-@import "./ComponentsStyles/Filter.scss";
+@import "./ComponentsStyles/Pages/CharactersPage.scss";
+@import "./ComponentsStyles/CharacterCard.scss";
 @import "./ComponentsStyles/Modal.scss";
-@import "./ComponentsStyles/LanguageToggle.scss";
 @import "./ComponentsStyles/Loader.scss";
+@import "./ComponentsStyles/Filter.scss";
+@import "./ComponentsStyles/LanguageToggle.scss";
+@import "./ComponentsStyles/Pages/ErrorPage.scss";
 @import "./ComponentsStyles/NotFoundPage.scss";
 
 // Базовые стили

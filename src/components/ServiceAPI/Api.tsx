@@ -14,7 +14,7 @@ const Image_URL =
 // Axios для обработки ошибки загрузки (по времени)
 const Api = axios.create({
   baseURL: Base_URL,
-  timeout: 25000,
+  timeout: 90000,
 });
 
 Api.interceptors.response.use(
@@ -39,10 +39,8 @@ export const FetchCharacters = async (
   next: string | null;
 }> => {
   if (language === "Wookiee") {
-    // Для Wookiee делаем 10 последовательных запросов
     const results: Character[] = [];
     for (let i = (page - 1) * 10 + 1; i <= page * 10; i++) {
-      // for (let i = page * 10; i <= page * 10; i++) {
       try {
         const response = await Api.get<WookieeCharacter>(
           `${Base_URL}people/${i}/?format=wookiee`
@@ -81,7 +79,6 @@ export const FetchCharacterImage = async (characterName: string) => {
     );
 
     if (response.data.data.length > 0) {
-      // Находим точное совпадение имени
       const exactMatch = response.data.data.find(
         (char: Character) =>
           char.name.toLowerCase() === characterName.toLowerCase()

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { FetchCharacters } from "../components/ServiceAPI/Api";
 import CharacterCard from "../components/CharacterCards";
@@ -11,7 +11,7 @@ import { Character, Nullable } from "../globalTypes/Types";
 
 const CharactersPage: React.FC = () => {
   const { language } = useAppContext();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState(true);
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
@@ -44,7 +44,7 @@ const CharactersPage: React.FC = () => {
       setTotalCount(data.count);
     } catch (error) {
       console.error("Ошибка при загрузки карточек пресонажей:", error);
-      // navigate("/404");
+      navigate("/404");
     } finally {
       setLoading(false);
     }
