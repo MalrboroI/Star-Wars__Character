@@ -8,7 +8,7 @@ import CharactersPage from "../pages/CharactersPages";
 
 // "Ленивая" загрузка страниц
 const ErrorPage = lazy(() => import("../pages/ErrorPage"));
-const NotFoundPage = lazy(() => import("../utils/NotFoundPage "));
+const NotFoundPage = lazy(() => import("../Utils/NotFoundPage "));
 
 export const router = createBrowserRouter([
   {

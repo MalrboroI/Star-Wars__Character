@@ -26,6 +26,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
         setImageData({ loading: true });
         try {
           const data = await FetchCharacterImage(character.name);
+
           if (data) {
             setImageData({
               image: data.image,
