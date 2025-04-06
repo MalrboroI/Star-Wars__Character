@@ -17,6 +17,8 @@ const Api = axios.create({
   timeout: 90000,
 });
 
+// const  page: number = 1;
+
 Api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -40,7 +42,7 @@ export const FetchCharacters = async (
 }> => {
   if (language === "Wookiee") {
     const results: Character[] = [];
-    for (let i = (page - 1) * 10 + 1; i <= page * 10; i++) {
+    for (let i = (page - 1) * 10; i <= page * 10; i++) {
       try {
         const response = await Api.get<WookieeCharacter>(
           `${Base_URL}people/${i}/?format=wookiee`
@@ -76,19 +78,25 @@ export const FetchCharacterImage = async (characterName: string) => {
     // Ищем персонажа по точному имени
     const response = await axios.get(
       `${Image_URL}?name=${encodeURIComponent(characterName)}`
+      // `${Base_URL}people/?page=${page}`
     );
 
+    // if (response.data.length > 0) {
+    //   const searchChar =
+    // }
     if (response.data.data.length > 0) {
       const exactMatch = response.data.data.find(
         (char: Character) =>
           char.name.toLowerCase() === characterName.toLowerCase()
       );
 
+      // const characterData = exactMatch || response.data.data[0];
       const characterData = exactMatch || response.data.data[0];
 
       return {
         image: characterData.image,
         description: characterData.description || "Нет описания",
+        name: characterData.name,
       };
     }
     return null;

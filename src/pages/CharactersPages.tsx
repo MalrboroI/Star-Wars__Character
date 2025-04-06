@@ -30,7 +30,7 @@ const CharactersPage: React.FC = () => {
     try {
       const data = await FetchCharacters(currentPage, language);
 
-      // API странное себя ведёт, чтобы не было повторения одинаковой интормации с апишки, пришлось ввести фильтрацию по уже добавленым, чтобы не было повторения
+      // API странное себя ведёт, чтобы не было повторения одинаковой информации с апишки, пришлось ввести фильтрацию по уже добавленым, чтобы не было повторения
 
       setCharacters((prev) => {
         const existingIds = new Set(prev.map((char) => char.name));

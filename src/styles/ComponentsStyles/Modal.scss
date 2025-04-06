@@ -25,10 +25,10 @@
     .gender-image {
       display: flex;
       align-items: center;
-      gap: 10px;
 
       &__svg {
         width: 5rem;
+        padding-left: 1rem;
       }
     }
   }
