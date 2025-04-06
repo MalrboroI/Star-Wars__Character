@@ -3,7 +3,7 @@ import { WookieeCharacter, Character } from "../../globalTypes/Types";
 
 // Работаем с сервисом (SWAPI The Star Wars API), url: https://swapi.dev/documentation. Для тестирования ответа от API: https://swapi.dev/
 
-//Для перевода на язык Вууки(Шайривук) используем: https://anythingtranslate.com/translators/shyriiwook-star-wars-languages-translator/
+//Для перевода элементов меню на язык Вууки(Шайривук) используем: https://anythingtranslate.com/translators/shyriiwook-star-wars-languages-translator/
 
 const Base_URL = "https://swapi.dev/api/";
 

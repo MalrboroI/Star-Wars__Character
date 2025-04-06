@@ -48,7 +48,7 @@ const CharactersPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, language, hasMore]);
+  }, [currentPage, language, hasMore, navigate]);
 
   useEffect(() => {
     if (genderFilter === "all") {
