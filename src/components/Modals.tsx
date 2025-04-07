@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalProps } from "../../globalTypes/Types";
-import { FetchCharacterImage } from "../ServiceAPI/Api";
-import { useAppContext } from "../../context/AppContext";
+import { ModalProps } from "../globalTypes/Types";
+import { FetchCharacterImage } from "../components/ServiceAPI/Api";
+import { useAppContext } from "../context/AppContext";
 import { Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import Loader from "./Loader";
-import MaleImage from "../../image/IconMale.svg";
-import FemeleImage from "../../image/IconFemale.svg";
+import Loader from "./Module/Loader";
+import MaleImage from "../Image/IconMale.svg";
+import FemeleImage from "../image/IconFemale.svg";
 
 const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
   const { language } = useAppContext();
@@ -93,11 +93,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
             <Loader />
           ) : imageData.error ? (
             <div className="image-error">
-              <img
-                src="/placeholder.jpg"
-                alt="Заглушка"
-                className="character-image"
-              />
+              <img src="#" alt="Ошибка" className="character-image" />
               <p className="error-text">{imageData.error}</p>
             </div>
           ) : imageData.image ? (
@@ -106,7 +102,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
               alt={character.name}
               className="character-image"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = "/placeholder.jpg";
+                (e.target as HTMLImageElement).src = "#";
                 setImageData((prev) => ({
                   ...prev,
                   error: "Ошибка загрузки изображения",
@@ -115,11 +111,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
             />
           ) : (
             <div className="image-placeholder">
-              <img
-                src="/placeholder.jpg"
-                alt="Заглушка"
-                className="character-image"
-              />
+              <img src="#" alt="Ошибка" className="character-image" />
             </div>
           )}
         </div>

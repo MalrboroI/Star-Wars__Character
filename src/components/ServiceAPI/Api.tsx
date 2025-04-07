@@ -17,8 +17,6 @@ const Api = axios.create({
   timeout: 90000,
 });
 
-// const  page: number = 1;
-
 Api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -75,22 +73,15 @@ export const FetchCharacters = async (
 
 export const FetchCharacterImage = async (characterName: string) => {
   try {
-    // Ищем персонажа по точному имени
     const response = await axios.get(
       `${Image_URL}?name=${encodeURIComponent(characterName)}`
-      // `${Base_URL}people/?page=${page}`
     );
-
-    // if (response.data.length > 0) {
-    //   const searchChar =
-    // }
     if (response.data.data.length > 0) {
       const exactMatch = response.data.data.find(
         (char: Character) =>
           char.name.toLowerCase() === characterName.toLowerCase()
       );
 
-      // const characterData = exactMatch || response.data.data[0];
       const characterData = exactMatch || response.data.data[0];
 
       return {
