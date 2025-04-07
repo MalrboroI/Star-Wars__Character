@@ -28,8 +28,6 @@ export interface ModalProps {
   open: boolean;
   onClose: () => void;
   character: Nullable<Character>;
-
-
 }
 
 // Типы для карточек

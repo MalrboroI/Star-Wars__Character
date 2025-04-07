@@ -9,9 +9,9 @@ const Base_URL = "https://swapi.dev/api/";
 
 // Изображение с API "starwars-databank"
 const Image_URL =
-  "https://starwars-databank-server.vercel.app/api/v1/characters";
+  "https://starwars-databank-server.vercel.app/api/v1/characters/name/";
 
-// Axios для обработки ошибки загрузки (по времени)
+// запрос в axios для обработки ошибки загрузки (по времени)
 const Api = axios.create({
   baseURL: Base_URL,
   timeout: 90000,
@@ -69,20 +69,23 @@ export const FetchCharacters = async (
   }
 };
 
-// Сделать условие для поиска по имени из SWAPI, и выдачей нужного изображения!!!!!!!
+
+// Для поиска по имени, для добавления изображения, полчучим из комп. "Modal" имя персонажа, и возьмем только фото и описание
 
 export const FetchCharacterImage = async (characterName: string) => {
   try {
-    const response = await axios.get(
-      `${Image_URL}?name=${encodeURIComponent(characterName)}`
+    //Для передачи запроса, и корректного URL закодируем полученное имя и отправим запрос
+    const response = await Api.get(
+      `${Image_URL}${encodeURIComponent(characterName)}`
     );
-    if (response.data.data.length > 0) {
-      const exactMatch = response.data.data.find(
+    console.log(encodeURIComponent(characterName));
+    if (response.data?.length > 0) {
+      // Ищем точное совпадение по имени, для избежания ошибок (в нижнем регист.)
+      const exactMatch = response.data.find(
         (char: Character) =>
           char.name.toLowerCase() === characterName.toLowerCase()
       );
-
-      const characterData = exactMatch || response.data.data[0];
+      const characterData = exactMatch || "Изображение не найдено";
 
       return {
         image: characterData.image,

@@ -25,6 +25,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
       if (open && character) {
         setImageData({ loading: true });
         try {
+          // Передаем имя в комп. API
           const data = await FetchCharacterImage(character.name);
 
           if (data) {
@@ -49,8 +50,6 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
         }
       }
     };
-
-    // Сбрасываем состояние при закрытии модального окна
     if (!open) {
       setImageData({ loading: false });
     } else {
