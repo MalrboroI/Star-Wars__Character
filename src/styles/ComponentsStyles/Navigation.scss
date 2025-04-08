@@ -43,8 +43,6 @@
 
     &:hover {
       color: $primary-color;
-      // background-color: $primary-bgc-btn;
-      // border: 1px solid $primary-color;
       border-bottom: 1px solid $primary-color;
       border-radius: 20px;
       transition: all 0.2s ease;
@@ -52,12 +50,16 @@
 
     &--active {
       color: $primary-color;
-      // background-color: $primary-bgc-btn;
-      // border: 1px solid $primary-color;
       border-bottom: 1px solid $primary-color;
-      // border-radius: 20px;
       transition: all 0.2s ease;
       font-weight: bold;
     }
+  }
+
+  @include respond-to("md") {
+    position: fixed;
+    top: 140px;
+    left: 190px;
+    margin: 0;
   }
 }

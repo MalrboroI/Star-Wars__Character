@@ -27,15 +27,15 @@
 
 // Брейкпоинты
 @mixin respond-to($breakpoint) {
-  @if $breakpoint == md {
-    @media (max-width: $breakpoint-md) {
+  @if $breakpoint == "md" {
+    @media (max-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
       @content;
     }
-  } @else if $breakpoint == lg {
+  } @else if $breakpoint == "lg" {
     @media (min-width: $breakpoint-md) and (max-width: $breakpoint-xl) {
       @content;
     }
-  } @else if $breakpoint == xl {
+  } @else if $breakpoint == "xl" {
     @media (min-width: $breakpoint-xl) and (max-width: $breakpoint-max) {
       @content;
     }

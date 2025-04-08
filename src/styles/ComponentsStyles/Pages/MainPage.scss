@@ -7,7 +7,11 @@
   flex-direction: column;
   align-items: center;
 
-  @include respond-to(lg) {
+  @include respond-to("md") {
+    margin-top: 70px;
+  }
+
+  @include respond-to("lg") {
     text-align: justify;
     flex-direction: row;
   }
@@ -15,7 +19,7 @@
   &__content {
     max-width: 800px;
 
-    @include respond-to(lg) {
+    @include respond-to("lg") {
       min-height: 50%;
       display: flex;
       flex-direction: column;
@@ -26,7 +30,6 @@
   &__title {
     color: $primary-color;
     font-size: 2.5rem;
-    // margin-bottom: $spacing-lg;
     margin-bottom: $spacing-md;
   }
 
@@ -42,7 +45,7 @@
     font-size: 1.1rem;
     padding: $spacing-md $spacing-xl;
 
-    @include respond-to(lg) {
+    @include respond-to("lg") {
       font-size: 15px;
       padding: 1rem 1.5rem;
 
@@ -55,12 +58,16 @@
   &__banner {
     position: relative;
     right: -69px;
-    display: flex;
     padding-top: 4rem;
     width: 36%;
 
-    @include respond-to(lg) {
+    @include respond-to("lg") {
       width: 65%;
+    }
+
+    @include respond-to("md") {
+      right: 5px;
+      width: 70%;
     }
   }
 }

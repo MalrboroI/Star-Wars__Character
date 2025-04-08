@@ -118,7 +118,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
         <div className="character-modal__content__info">
           <div className="info-row">
             <span className="info-label">
-              {language === "Russian" ? "Рост: " : "Acwoahrracao: "}:
+              {language === "Russian" ? "Рост: " : "Acwoahrracao: "}
             </span>
             <span>{character.height}</span>
           </div>

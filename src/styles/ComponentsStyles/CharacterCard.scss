@@ -76,7 +76,7 @@
     }
   }
 
-  @include respond-to(sm) {
+  @include respond-to("sm") {
     padding: $spacing-sm;
 
     &__title {
