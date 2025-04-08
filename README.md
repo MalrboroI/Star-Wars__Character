@@ -89,9 +89,10 @@ components.
 
 🔗 Активные кнопки навигации подсвечиваются по текущему URL.
 
-<img src="/starWars/public/ImageProject/photo_2025-04-06_15-03-45.jpg" alt="MainPage">
-<img src="/starWars/public/ImageProject/photo_08-04-2025 095843.jpg" alt="CharacterPage">
-<img src="/starWars/public/ImageProject/photo_08-04-2025 095853.jpg" alt="ModalPage">
-<img src="/starWars/public/ImageProject/photo_2025-04-06_15-03-36.jpg" alt="ModalPage">
-<img src="/starWars/public/ImageProject/photo_2025-04-06_15-03-23.jpg" alt="ErrorPage">
-<img src="/starWars/public/ImageProject/photo_2025-04-06_15-03-49.jpg" alt="ErrorLoadingImg">
+
+<img src="public/ImageProject/photo_2025-04-06_15-03-45.jpg" alt="MainPage">
+<img src="public/ImageProject/photo_08-04-2025 095843.jpg" alt="CharacterPage">
+<img src="public/ImageProject/photo_08-04-2025 095853.jpg" alt="ModalPage">
+<img src="public/ImageProject/photo_2025-04-06_15-03-36.jpg" alt="ModalPage">
+<img src="public/ImageProject/photo_2025-04-06_15-03-23.jpg" alt="ErrorPage">
+<img src="public/ImageProject/photo_2025-04-06_15-03-49.jpg" alt="ErrorLoadingImg">
