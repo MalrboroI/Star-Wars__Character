@@ -7,7 +7,7 @@ import { Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Loader from "./Module/Loader";
 import MaleImage from "../Image/IconMale.svg";
-import FemeleImage from "../image/IconFemale.svg";
+import FemeleImage from "../Image/IconFemale.svg";
 
 const Modal: React.FC<ModalProps> = ({ open, onClose, character }) => {
   const { language } = useAppContext();
