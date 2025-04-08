@@ -35,6 +35,7 @@ export const router = createBrowserRouter([
   },
 ]);
 
+
 export const LazyRouteElement = ({ element }: { element: React.ReactNode }) => (
   <Suspense fallback={<Loader />}>{element}</Suspense>
 );
