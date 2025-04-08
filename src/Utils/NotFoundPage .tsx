@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+
 const NotFoundPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
